@@ -181,7 +181,7 @@ public class SortDemo {
 	public static void main(String[] args) {
 		SortDemo sd = new SortDemo();
 		Comparable[] items=sd.readData("SortingData/test5.dat");
-		System.out.println(sd.testOne("sorting2014.RadixSort",items));
+		System.out.println(sd.testOne("sorting2014.MergeSort",items));
 		sd.printSortedArray(items);
 //		System.err.println(Runtime.getRuntime().maxMemory());
 //		System.out.println(sd.testAll("test6.dat"));
