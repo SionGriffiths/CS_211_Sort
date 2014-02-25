@@ -21,7 +21,7 @@ public class SortDemo {
 		Comparable[] items;
 		File file = new File(fileName);
 		BufferedReader reader=null;
-		try 
+		try
 		{
 			reader = new BufferedReader(
 						 new FileReader(file));
@@ -35,7 +35,7 @@ public class SortDemo {
 		int numLines=0;
 		while (! eof)
 		{
-			try 
+			try
 			{
 				inLine=reader.readLine();
 				if (inLine==null)
@@ -48,16 +48,16 @@ public class SortDemo {
 			{
 			}
 		}
-		try 
+		try
 		{
 			reader.close();
 		} catch (IOException e)
 		{
 		}
-		
+
 		items = new Comparable[numLines];
-		
-		try 
+
+		try
 		{
 			reader = new BufferedReader(
 						 new FileReader(file));
@@ -71,7 +71,7 @@ public class SortDemo {
 		numLines=0;
 		while (! eof)
 		{
-			try 
+			try
 			{
 				inLine=reader.readLine();
 				if (inLine==null)
@@ -85,16 +85,16 @@ public class SortDemo {
 			{
 			}
 		}
-		try 
+		try
 		{
 			reader.close();
 		} catch (IOException e)
 		{
 		}
-		
-		return items;	
+
+		return items;
 	}
-	
+
 	public long testOne(String type, Comparable[] items)
 	{
 		long start;
@@ -112,7 +112,7 @@ public class SortDemo {
 		}
 		return timeTaken;
 	}
-	
+
 	public void printSortedArray(Comparable[] items)
 	{
 		for (int i=0; i<items.length; i++)
@@ -120,10 +120,10 @@ public class SortDemo {
 			System.out.println(items[i]);
 		}
 	}
-	
+
 	public String testAll(String filename)
 	{
-		String sortTypes[] = {"MergeSort","QuickSort"		
+		String sortTypes[] = {"MergeSort","QuickSort"
 							 ,"SelectionSort","BubbleSort"};
 		long timeTaken[] = new long[sortTypes.length];
 		StringBuffer retLine=new StringBuffer();
@@ -154,7 +154,7 @@ public class SortDemo {
 							  };
 		String sortTypes[] = {"QuickSort",
 //		                      "OptimisedQuickSort",
-//							  "TreeSort"		
+//							  "TreeSort"
 //							 ,"SelectionSort","BubbleSort"
 							 };
 		long timeTaken = 99999999;
@@ -175,14 +175,14 @@ public class SortDemo {
 			retLine.append("\n");
 		}
 		return retLine.toString();
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		SortDemo sd = new SortDemo();
-		Comparable[] items=sd.readData("SortingData/test3.dat");
-		System.out.println(sd.testOne("sorting2011.RadixSort",items));
-		sd.printSortedArray(items); 
+		Comparable[] items=sd.readData("SortingData/test5.dat");
+		System.out.println(sd.testOne("sorting2014.RadixSort",items));
+		sd.printSortedArray(items);
 //		System.err.println(Runtime.getRuntime().maxMemory());
 //		System.out.println(sd.testAll("test6.dat"));
 //		System.out.println(sd.testEverything());
