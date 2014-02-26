@@ -28,11 +28,15 @@ public class MakeDataFile {
 				makeFile("test"+String.valueOf(i)+"a"+".dat", (int)Math.pow(10,i)*2);
 				System.out.print(".");
 				makeFile("test"+String.valueOf(i)+"b"+".dat", (int)Math.pow(10,i)*5);
+        System.out.print(".");
+        makeFile("test"+String.valueOf(i)+"c"+".dat", (int)Math.pow(10,i)*7);
+        System.out.print(".");
+        makeFile("test"+String.valueOf(i)+"d"+".dat", (int)Math.pow(10,i)*9);
 			}
 			System.out.println("done");
 		}
 	}
-		
+
 	public static void makeFile(String name, int numbers)
 	{
 		BufferedWriter writer=null;
@@ -42,7 +46,7 @@ public class MakeDataFile {
 		}
 
 		int number=0;
-		
+
 		for (int i = 0; i<numbers; i++)
 		{
 			number=(int)(1000000+(Math.random()*8999999));
@@ -57,8 +61,8 @@ public class MakeDataFile {
 		} catch (IOException ex) {
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 }
