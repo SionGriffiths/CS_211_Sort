@@ -140,14 +140,14 @@ public class SortDemo {
 
 	public String testEverything()
 	{
-		String filenames [] ={"test2.dat","test3.dat",
-							  "test3a.dat","test3b.dat",
-							  "test4.dat",
-							  "test4a.dat","test4b.dat",
-							  "test5.dat",
-							  "test5a.dat"
-							  ,"test5b.dat",
-							  "test6.dat"
+		String filenames [] ={"test2.dat", "SortingData/test3.dat",
+                "SortingData/test3a.dat", "SortingData/test3b.dat",
+                "SortingData/test4.dat",
+                "SortingData/test4a.dat", "SortingData/test4b.dat",
+                "SortingData/test5.dat",
+                "SortingData/test5a.dat"
+							  , "SortingData/test5b.dat",
+                "SortingData/test6.dat"
 //							  ,"test6a.dat"
 //							  ,"test6b.dat"
 //							  ,"test7.dat"
@@ -180,13 +180,24 @@ public class SortDemo {
 
 	public static void main(String[] args) {
 		SortDemo sd = new SortDemo();
-		Comparable[] items=sd.readData("SortingData/test5.dat");
-		System.out.println(sd.testOne("sorting2014.MergeSort",items));
-		sd.printSortedArray(items);
+		Comparable[] items=sd.readData("SortingData/test6.dat");
+		System.out.println(sd.testOne("sorting2014.QuickSort",items));
+		//sd.printSortedArray(items);
+
+
+    if(Checks.isSorted(items)){
+      System.out.println("Success - List Sorted");
+    }else{
+      System.out.println("Fail - List Unsorted");
+    }
 //		System.err.println(Runtime.getRuntime().maxMemory());
 //		System.out.println(sd.testAll("test6.dat"));
 //		System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
 //		sd.printSortedArray(items);
 	}
+
+
+
+
 }
