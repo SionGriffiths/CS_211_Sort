@@ -10,6 +10,7 @@ public class InsertionSort implements Sorter {
     insertionSort(items);
   }
 
+  
   private void insertionSort(Comparable[] items) {
     int i, j;
     Comparable newValue;
