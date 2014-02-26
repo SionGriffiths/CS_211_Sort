@@ -28,6 +28,8 @@ public class MakeDataFile {
 				makeFile("test"+String.valueOf(i)+"a"+".dat", (int)Math.pow(10,i)*2);
 				System.out.print(".");
 				makeFile("test"+String.valueOf(i)+"b"+".dat", (int)Math.pow(10,i)*5);
+        System.out.print(".");
+        makeFile("test"+String.valueOf(i)+"c"+".dat", (int)Math.pow(10,i)*7);
 			}
 			System.out.println("done");
 		}

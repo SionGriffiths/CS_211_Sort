@@ -180,8 +180,8 @@ public class SortDemo {
 
 	public static void main(String[] args) {
 		SortDemo sd = new SortDemo();
-		Comparable[] items=sd.readData("SortingData/test5.dat");
-		System.out.println(sd.testOne("sorting2014.InsertionSort",items));
+		Comparable[] items=sd.readData("SortingData/test6c.dat");
+		System.out.println(sd.testOne("sorting2014.QuickSort",items));
 		//sd.printSortedArray(items);
 
 

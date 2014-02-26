@@ -7,16 +7,26 @@ public class QuickSort implements Sorter {
 
   @Override
   public void sort(Comparable[] items, int cutoff) {
-    quickSort(items, 0, items.length-1);
+    quickSort(items, 0, items.length-1, cutoff);
 
   }
 
-  private void quickSort(Comparable[] items, int low, int high){
+  private void quickSort(Comparable[] items, int low, int high, int cutoff){
     int pivot;
+
+    if(low + cutoff > high){
+      InsertionSort.insertionSort(items, low, high);
+
+    }else{
+
+      pivot = partition( items, low, high );
+      quickSort(items, low, pivot-1, cutoff);
+      quickSort(items, pivot+1, high, cutoff);
+    /*
     if ( high > low ){
       pivot = partition( items, low, high );
       quickSort(items, low, pivot-1);
-      quickSort(items, pivot+1, high);
+      quickSort(items, pivot+1, high);*/
     }
   }
 
