@@ -33,6 +33,18 @@ public class Sig2Utils {
     return (item1.compareTo(item2) < 0);
   }
 
+  public static int numRepeatValues(Comparable[] items){
+    int repeats = 0;
+
+    for(int i = 0; i < items.length-1; i++){
+      if(items[i].compareTo(items[i+1]) == 0){
+        repeats++;
+      }
+    }
+
+    return repeats;
+  }
+
 
   public static void swapElements(Comparable[] items, int indexFrom, int indexTo){
     Comparable temp = items[indexFrom];

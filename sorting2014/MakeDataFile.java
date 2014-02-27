@@ -31,7 +31,9 @@ public class MakeDataFile {
         System.out.print(".");
         makeFile("test"+String.valueOf(i)+"c"+".dat", (int)Math.pow(10,i)*7);
         System.out.print(".");
-        makeFile("test"+String.valueOf(i)+"d"+".dat", (int)Math.pow(10,i)*9);
+        makeFile("test"+String.valueOf(i)+"d"+".dat", (int)Math.pow(10,i)*8);
+        System.out.print(".");
+        makeFile("test"+String.valueOf(i)+"e"+".dat", (int)Math.pow(10,i)*9);
 			}
 			System.out.println("done");
 		}
@@ -41,9 +43,8 @@ public class MakeDataFile {
 	{
 		BufferedWriter writer=null;
 		try {
-			writer = new BufferedWriter(new FileWriter(name));
-		} catch (IOException ex) {
-		}
+			writer = new BufferedWriter(new FileWriter("SortingData/" + name));
+		} catch (IOException ex) {}
 
 		int number=0;
 

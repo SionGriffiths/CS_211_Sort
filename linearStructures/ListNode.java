@@ -13,7 +13,6 @@ public class ListNode {
     this.dataObject = dataObject;
   }
 
-
   public Comparable getDataObject() {
     return dataObject;
   }
