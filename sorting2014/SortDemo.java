@@ -24,7 +24,7 @@ public class SortDemo {
 
     try    {
       reader = new BufferedReader(
-        new FileReader(file));
+          new FileReader(file));
     } catch (FileNotFoundException e)    {
       System.out.println("File not found "+fileName);
       System.exit(0);
@@ -52,7 +52,7 @@ public class SortDemo {
 
     try{
       reader = new BufferedReader(
-        new FileReader(file));
+          new FileReader(file));
     } catch (FileNotFoundException e){
       System.out.println("File not found "+fileName);
       System.exit(0);
@@ -110,17 +110,17 @@ public class SortDemo {
 
   public static void main(String[] args) {
     SortDemo sd = new SortDemo();
-    //  Comparable[] items=sd.readData("SortingData/test3d.dat");
-    //  System.out.println("Sorting " + items.length + " elements....");
-    //  System.out.println(sd.testOne("sorting2014.QuickSort",items));
+      Comparable[] items=sd.readData("SortingData/test3a.dat");
+      System.out.println("Sorting " + items.length + " elements....");
+      System.out.println(sd.testOne("sorting2014.HashSort",items));
     //sd.printSortedArray(items);
 
 
-    // System.out.println(Sig2Utils.validate(items));
+     System.out.println(Sig2Utils.validate(items));
 
 //		System.err.println(Runtime.getRuntime().maxMemory());
 //		System.out.println(sd.testAll("test6.dat"));
-    System.out.println(sd.testEverything());
+ //   System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
 //		sd.printSortedArray(items);
   }
@@ -131,38 +131,37 @@ public class SortDemo {
   public String testEverything()
   {
     String filenames [] ={
-      "SortingData/test3.dat",
-      "SortingData/test3a.dat",
-      "SortingData/test3b.dat",
-      "SortingData/test3c.dat",
-      "SortingData/test3d.dat",
-      "SortingData/test4.dat",
-      "SortingData/test4a.dat",
-      "SortingData/test4b.dat",
-      "SortingData/test4c.dat",
-      "SortingData/test4d.dat",
-      "SortingData/test5.dat",
-      "SortingData/test5a.dat",
-      "SortingData/test5b.dat",
-      "SortingData/test5c.dat",
-      "SortingData/test5d.dat",
-      "SortingData/test6.dat",
-      "SortingData/test6a.dat",
-      "SortingData/test6b.dat",
-      "SortingData/test6c.dat",
-      "SortingData/test6d.dat"
+        "SortingData/test3.dat",
+        "SortingData/test3a.dat",
+        "SortingData/test3b.dat",
+        "SortingData/test3c.dat",
+        "SortingData/test3d.dat",
+        "SortingData/test4.dat",
+        "SortingData/test4a.dat",
+        "SortingData/test4b.dat",
+        "SortingData/test4c.dat",
+        "SortingData/test4d.dat",
+        "SortingData/test5.dat",
+        "SortingData/test5a.dat",
+        "SortingData/test5b.dat",
+        "SortingData/test5c.dat",
+        "SortingData/test5d.dat",
+        "SortingData/test6.dat",
+        "SortingData/test6a.dat",
+        "SortingData/test6b.dat",
+        "SortingData/test6c.dat",
+        "SortingData/test6d.dat"
     };
 
     String sortTypes[] = {
-      "Quick3Way",
-      "QuickSort",
-      "MergeSort",//2
-      "JavaSort",
-      "RadixSort",//4
-
-      //   "InsertionSort",
-      //"SelectionSort", //6
-      //"BubbleSort"
+        "Quick3Way",
+        "QuickSort",
+        "MergeSort",//2
+        "JavaSort",
+        "RadixSort",//4
+  //      "InsertionSort",
+  //      "SelectionSort", //6
+  //      "BubbleSort"
     };
 
     long timeTaken = 0l;
@@ -173,7 +172,7 @@ public class SortDemo {
       for (int j=0; j<filenames.length;j++){
 
         Comparable[] items=this.readData(filenames[j]);
-
+        if (items.length>700000 && i>3) break;
         if (items.length>100000 && i>4) break;
         if (items.length>10000 && i>6) break;
 
