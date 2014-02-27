@@ -7,6 +7,9 @@ public class QuickSort implements Sorter {
 
   @Override
   public void sort(Comparable[] items, int cutoff) {
+    if(items.length < 10000){
+      cutoff = 0;
+    }
     quickSort(items, 0, items.length-1, cutoff);
 
   }
@@ -14,9 +17,9 @@ public class QuickSort implements Sorter {
   private void quickSort(Comparable[] items, int low, int high, int cutoff){
     int pivot;
 
-    if(low + cutoff > high){
+    if((high-low) < cutoff){
       InsertionSort.insertionSort(items, low, high);
-
+      return;
     }else{
 
       pivot = partition( items, low, high );
@@ -37,24 +40,28 @@ public class QuickSort implements Sorter {
     int diff = (high-low)/2;
     int pivotPos = low+diff;
 
-    Comparable temp = items[pivotPos];
-    items[pivotPos] = items[low];
-    items[low] = temp;
+    Sig2Utils.swapElements(items, pivotPos, low);
+    // Comparable temp = items[pivotPos];
+    // items[pivotPos] = items[low];
+    // items[low] = temp;
 
     int swapPos = low+1;
 
     for(int i = swapPos; i <= high; i++){
       if(items[i].compareTo(items[low]) < 0){
-        temp = items[i];
-        items[i] = items[swapPos];
-        items[swapPos] = temp;
+
+        Sig2Utils.swapElements(items, swapPos, i);
+        //temp = items[i];
+        // items[i] = items[swapPos];
+        // items[swapPos] = temp;
         swapPos++;
       }
     }
 
-    temp = items[low];
-    items[low] = items[swapPos-1];
-    items[swapPos-1] = temp;
+    Sig2Utils.swapElements(items, low, swapPos - 1);
+    // temp = items[low];
+    // items[low] = items[swapPos-1];
+    // items[swapPos-1] = temp;
 
     return swapPos-1;
   }

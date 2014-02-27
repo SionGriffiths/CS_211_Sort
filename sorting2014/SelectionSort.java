@@ -11,7 +11,7 @@ public class SelectionSort implements Sorter {
   @Override
   public void sort(Comparable[] items, int cutoff) {
 
-    System.out.println("Sorting " + items.length + " elements");
+
     int last = items.length-1;
     int maxIndex = 0;
     Comparable max;

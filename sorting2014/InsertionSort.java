@@ -13,12 +13,12 @@ public class InsertionSort implements Sorter {
 
   public static void insertionSort(Comparable[] items, int low, int high) {
     for( int p = low + 1; p <= high; p++ ) {
-      Comparable tmp = items[ p ];
+      Comparable temp = items[ p ];
       int j;
 
-      for( j = p; j > low && tmp.compareTo( items[ j - 1 ] ) < 0; j-- )
+      for( j = p; j > low && temp.compareTo( items[ j - 1 ] ) < 0; j-- )
         items[ j ] = items[ j - 1 ];
-      items[ j ] = tmp;
+      items[ j ] = temp;
     }
   }
 }

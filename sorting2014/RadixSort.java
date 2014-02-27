@@ -17,14 +17,14 @@ public class RadixSort implements Sorter {
 	/* (non-Javadoc)
 	 * @see sorting.Sorter#sort(java.lang.Comparable[])
 	 */
-	public void sort(Comparable[] items, int cutoff) 
+	public void sort(Comparable[] items, int cutoff)
 	{
 		radixSort(items);
 	}
-	
+
 	private void radixSort(Object[] items)
 	{
-		
+
 		int maxItems=items.length;
 		String str;
 		int maxLength=0;
@@ -45,7 +45,7 @@ public class RadixSort implements Sorter {
 			for (int j=0; j< items.length; j++)
 			{
 				str=items[j].toString();
-				
+
 				if (d<str.length())
 				{
 					index =str.charAt(d);
@@ -53,7 +53,7 @@ public class RadixSort implements Sorter {
 				{
 					index =0;
 				}
-				queues[index].add(items[j]);	
+				queues[index].add(items[j]);
 			}
 			for (int j=0, k=0; j< RADIX; j++)
 			{
