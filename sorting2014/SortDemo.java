@@ -90,16 +90,18 @@ public class SortDemo {
     Sorter s = SortFactory.getSorter(type);
 
     if (s != null){
-      start=Calendar.getInstance().getTimeInMillis();
+      //Changed timing to nanoseconds for improved granularity
+      start = System.nanoTime();
       s.sort(items,15);
-      finish=Calendar.getInstance().getTimeInMillis();
+      finish = System.nanoTime();
       timeTaken=finish-start;
     } else {
       System.out.println("Failed loading the sorter, no sorting will happen.");
     }
-   // System.out.print(Sig2Utils.validate(items) +" using " + type + " on " + items.length + " items");
-   // System.out.print(" with " + Sig2Utils.numRepeatValues(items) + " repeated elements" + "\n");
-    return timeTaken;
+    //Check that the returned list is sorted
+    System.out.println(Sig2Utils.validate(items) + " using " + type + " on " + items.length + " items");
+    // System.out.print(" with " + Sig2Utils.numRepeatValues(items) + " repeated elements" + "\n");
+    return timeTaken/1000000; //nanoseconds -> milliseconds
   }
 
   public void printSortedArray(Comparable[] items){
@@ -112,16 +114,17 @@ public class SortDemo {
 
   public static void main(String[] args) {
     SortDemo sd = new SortDemo();
-       Comparable[] items=sd.readData("SortingData/test3.dat");
-       System.out.println(sd.testOne("sorting2014.HashSort",items));
+  //  Comparable[] items=sd.readData("SortingData/test3e.dat");
+  //  System.out.println(sd.testOne("sorting2014.SelectionSort",items));
     //    sd.printSortedArray(items);
 
 
     //System.out.println(Sig2Utils.validate(items));
+    //  System.out.println(Sig2Utils.numRepeatValues(items) +" items repeating");
 
 //		System.err.println(Runtime.getRuntime().maxMemory());
 //		System.out.println(sd.testAll("test6.dat"));
-  //  System.out.println(sd.testEverything());
+      System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
 //		sd.printSortedArray(items);
   }
@@ -163,11 +166,12 @@ public class SortDemo {
       "QuickSort",
       "MergeSort",//2
       "JavaSort",
-      //     "RadixSort",//4
       "HashSort",
-      //    "InsertionSort",
-      //    "SelectionSort", //7
-      //    "BubbleSort"
+      "CombSort",
+      "RadixSort",//6
+      "InsertionSort",
+      "SelectionSort", //8
+      "BubbleSort"
     };
 
     long timeTaken = 0l;
@@ -178,13 +182,12 @@ public class SortDemo {
       for (int j=0; j<filenames.length;j++){
 
         Comparable[] items=this.readData(filenames[j]);
-        //if (items.length>700000 && i>3) break;
-        // if (items.length>100000 && i>4) break;
-        if (items.length>10000 && i>6) break;
-
-        // if (items.length>5000000 && i>1) break;
+       // if (items.length>8000000 && i>5) break;
+        if (items.length>100000 && i>6) break;
+        if (items.length>10000 && i>8) break;
 
         timeTaken = this.testOne("sorting2014."+sortTypes[i],items);
+
         retLine.append(","+timeTaken);
       }
       retLine.append("\n");
@@ -192,17 +195,30 @@ public class SortDemo {
     return retLine.toString();
 
   }
-/*
-  public String testAll(String filename)
-  {
-    String sortTypes[] = {"MergeSort","QuickSort"
-      ,"SelectionSort","BubbleSort"};
+
+  public String testAll(String filename){
+    String sortTypes[] = {
+      "Quick3Way",
+      "QuickSort",
+      "MergeSort",//2
+      "JavaSort",
+      "HashSort",
+      "CombSort",
+      "RadixSort",//6
+      "InsertionSort",
+      "SelectionSort", //8
+      "BubbleSort"
+    };
+
     long timeTaken[] = new long[sortTypes.length];
     StringBuffer retLine=new StringBuffer();
-    for (int i= 0; i<sortTypes.length;i++)
-    {
+
+    for (int i= 0; i<sortTypes.length;i++){
       Comparable[] items=this.readData(filename);
-      if (items.length>10000 && i>1) break;
+      if (items.length>700000 && i>5) break;
+      if (items.length>100000 && i>6) break;
+      if (items.length>10000 && i>8) break;
+
       timeTaken[i]=
         this.testOne("sorting."+sortTypes[i],items);
       retLine.append(sortTypes[i]+"\t"+timeTaken[i]+"\n");
@@ -210,7 +226,7 @@ public class SortDemo {
     return retLine.toString();
   }
 
-  */
+
 
 
 }

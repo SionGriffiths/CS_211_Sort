@@ -33,6 +33,7 @@ public class Sig2Utils {
     return (item1.compareTo(item2) < 0);
   }
 
+
   public static int numRepeatValues(Comparable[] items){
     int repeats = 0;
 
@@ -51,4 +52,42 @@ public class Sig2Utils {
     items[indexFrom] = items[indexTo];
     items[indexTo] = temp;
   }
+
+  public static int[] getMinMax(Comparable[] items){
+    Comparable min = null;
+    Comparable max = null;
+
+    for(Comparable i : items){
+      if(min == null || i.compareTo(min) < 0){
+        min = i;
+      }
+      if(max == null || i.compareTo(max) > 0){
+        max = i;
+      }
+    }
+    int[] minmax = new int[2];
+
+    minmax[0] = Integer.parseInt(min.toString());
+    minmax[1] =  Integer.parseInt(max.toString());
+    return minmax;
+  }
+
+  /*
+  public int valueRange(Comparable[] items){
+    Comparable min = null;
+    Comparable max = null;
+
+    for(Comparable i : items){
+      if(min == null || i.compareTo(min) < 0){
+        min = i;
+      }
+      if(max == null || i.compareTo(max) > 0){
+        max = i;
+      }
+    }
+    int range =  Integer.parseInt(max.toString()) - Integer.parseInt(min.toString());
+    return range;
+  }
+  */
+
 }

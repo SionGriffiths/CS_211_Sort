@@ -9,12 +9,13 @@ import linearStructures.NodeList;
 public class HashSort implements Sorter {
 
   private NodeList[] help;
-  private Comparable[] help2;
+
   @Override
   public void sort(Comparable[] items, int cutoff) {
 
+   // int range = valueRange(items);
     help = new NodeList[9000000];
-    help2 = new Comparable[items.length-1];
+
     hashSort(items, items.length-1);
   }
 
@@ -41,11 +42,11 @@ public class HashSort implements Sorter {
         items[j] = help[i].getHead().getDataObject();
         j++;
         if(help[i].getHead().getNext() != null){
-         for(ListNode itar = help[i].getHead().getNext(); itar != null; itar = itar.getNext() ){
+          for(ListNode itar = help[i].getHead().getNext(); itar != null; itar = itar.getNext() ){
             items[j] = itar.getDataObject();
-           j++;
+            j++;
           }
-         }
+        }
       }
     }
 
@@ -54,10 +55,10 @@ public class HashSort implements Sorter {
 
 
   private int hashFunction(Comparable element){
-
-
     int value = Integer.parseInt(element.toString());
-
     return value - 1000000;
   }
+
+
+
 }

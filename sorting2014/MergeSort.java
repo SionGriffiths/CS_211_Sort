@@ -4,14 +4,15 @@ package sorting2014;
  * @author Siôn Griffiths - sig2@aber.ac.uk
  *         Date: 25/02/14
  *         Time: 19:01
+ *         from slides
  */
 public class MergeSort implements Sorter {
 
 
   @Override
   public void sort(Comparable[] items, int cutoff) {
-    Comparable[] help = new Comparable[items.length];
-    mergeSort(items, help, 0, items.length - 1);
+    Comparable[] temp = new Comparable[items.length];
+    mergeSort(items, temp, 0, items.length - 1);
   }
 
   private void mergeSort(Comparable[] items, Comparable[] temp, int left, int right){

@@ -2,6 +2,8 @@ package sorting2014;
 
 /**
  * Created by sig2 on 26/02/14.
+ *
+ * taken from lecture slides
  */
 public class QuickSort implements Sorter {
 
