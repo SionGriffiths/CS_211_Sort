@@ -123,8 +123,8 @@ public class SortDemo {
     //  System.out.println(Sig2Utils.numRepeatValues(items) +" items repeating");
 
 //		System.err.println(Runtime.getRuntime().maxMemory());
-//		System.out.println(sd.testAll("test6.dat"));
-      System.out.println(sd.testEverything());
+		System.out.println(sd.testAll("SortingData/test5.dat"));
+ //     System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
 //		sd.printSortedArray(items);
   }
@@ -220,7 +220,7 @@ public class SortDemo {
       if (items.length>10000 && i>8) break;
 
       timeTaken[i]=
-        this.testOne("sorting."+sortTypes[i],items);
+        this.testOne("sorting2014."+sortTypes[i],items);
       retLine.append(sortTypes[i]+"\t"+timeTaken[i]+"\n");
     }
     return retLine.toString();
