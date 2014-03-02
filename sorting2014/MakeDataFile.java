@@ -35,6 +35,7 @@ public class MakeDataFile {
         System.out.print(".");
         makeFile("test"+String.valueOf(i)+"e"+".dat", (int)Math.pow(10,i)*9);
 			}
+
 			System.out.println("done");
 		}
 	}
@@ -53,14 +54,12 @@ public class MakeDataFile {
 			number=(int)(1000000+(Math.random()*8999999));
 			try {
 				writer.write(number+"\n");
-			} catch (IOException e)
-			{}
+			} catch (IOException e){}
 		}
 
 		try {
 			writer.close();
-		} catch (IOException ex) {
-		}
+		} catch (IOException ex) {}
 	}
 
 

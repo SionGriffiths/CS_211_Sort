@@ -2,6 +2,7 @@ package sorting2014;
 
 import linearStructures.ListNode;
 import linearStructures.NodeList;
+import projectUtils.SortUtils;
 
 /**
  * Created by sig2 on 27/02/14.
@@ -9,12 +10,15 @@ import linearStructures.NodeList;
 public class HashSort implements Sorter {
 
   private NodeList[] help;
+  private int min;
+  private int max;
 
   @Override
   public void sort(Comparable[] items, int cutoff) {
 
-   // int range = valueRange(items);
-    help = new NodeList[9000000];
+    getMinMax(items);
+    int range = max-min;
+    help = new NodeList[range+1];
 
     hashSort(items, items.length-1);
   }
@@ -23,8 +27,6 @@ public class HashSort implements Sorter {
 
     int insertIndex = 0;
     for(int i = 0; i < items.length; i++){
-
-
       insertIndex = hashFunction(items[i]);
 
       NodeList list = new NodeList();
@@ -56,9 +58,14 @@ public class HashSort implements Sorter {
 
   private int hashFunction(Comparable element){
     int value = Integer.parseInt(element.toString());
-    return value - 1000000;
+    return value - min;
   }
 
 
+  private void getMinMax(Comparable[] items){
+    int[] minmax = SortUtils.getMinMax(items);
+    this.min = minmax[0];
+    this.max = minmax[1];
+  }
 
 }

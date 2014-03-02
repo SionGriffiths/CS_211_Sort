@@ -1,5 +1,7 @@
 package sorting2014;
 
+import projectUtils.SortUtils;
+
 /**
  * Created by sig2 on 26/02/14.
  *
@@ -19,9 +21,9 @@ public class QuickSort implements Sorter {
   private void quickSort(Comparable[] items, int low, int high, int cutoff){
     int pivot;
 
-    if((high-low) < cutoff){
+    if(high <= low + cutoff){
       InsertionSort.insertionSort(items, low, high);
-      return;
+
     }else{
 
       pivot = partition( items, low, high );
@@ -42,28 +44,20 @@ public class QuickSort implements Sorter {
     int diff = (high-low)/2;
     int pivotPos = low+diff;
 
-    Sig2Utils.swapElements(items, pivotPos, low);
-    // Comparable temp = items[pivotPos];
-    // items[pivotPos] = items[low];
-    // items[low] = temp;
+    SortUtils.swapElements(items, pivotPos, low);
 
     int swapPos = low+1;
 
     for(int i = swapPos; i <= high; i++){
       if(items[i].compareTo(items[low]) < 0){
 
-        Sig2Utils.swapElements(items, swapPos, i);
-        //temp = items[i];
-        // items[i] = items[swapPos];
-        // items[swapPos] = temp;
+        SortUtils.swapElements(items, swapPos, i);
         swapPos++;
       }
     }
 
-    Sig2Utils.swapElements(items, low, swapPos - 1);
-    // temp = items[low];
-    // items[low] = items[swapPos-1];
-    // items[swapPos-1] = temp;
+    SortUtils.swapElements(items, low, swapPos - 1);
+
 
     return swapPos-1;
   }

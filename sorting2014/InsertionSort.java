@@ -1,5 +1,7 @@
 package sorting2014;
 
+import projectUtils.SortUtils;
+
 /**
  * Created by sig2 on 26/02/14.
  */
@@ -12,13 +14,29 @@ public class InsertionSort implements Sorter {
 
 
   public static void insertionSort(Comparable[] items, int low, int high) {
-    for( int p = low + 1; p <= high; p++ ) {
-      Comparable temp = items[ p ];
+    for(int i = low + 1; i <= high; i++ ) {
+
+      Comparable temp = items[i];
       int j;
 
-      for( j = p; j > low && temp.compareTo( items[ j - 1 ] ) < 0; j-- )
-        items[ j ] = items[ j - 1 ];
-      items[ j ] = temp;
+      for(j = i; j > low && temp.compareTo(items[j-1]) < 0; j--){
+
+        items[j] = items[j-1];
+      }
+      items[j] = temp;
     }
   }
+
+/*
+  public static void insertionSort(Comparable[] items, int low, int high){
+    for (int i = 0; i <= high; i++) {
+      for (int j = i; j > low; j--) {
+        if (items[j-1].compareTo(items[j]) > 0) {
+
+          SortUtils.swapElements(items, j, j-1);
+        }
+      }
+    }
+  }*/
+
 }

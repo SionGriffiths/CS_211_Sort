@@ -5,8 +5,10 @@
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
 package sorting2014;
+import projectUtils.SortUtils;
+
 import java.io.*;
-import java.util.*;
+
 /**
  * @author rcs
  *
@@ -83,7 +85,7 @@ public class SortDemo {
 
 
 
-  public long testOne(String type, Comparable[] items){
+  public long testOne(String type, Comparable[] items, int cutoff){
     long start;
     long finish;
     long timeTaken = 0;
@@ -92,16 +94,17 @@ public class SortDemo {
     if (s != null){
       //Changed timing to nanoseconds for improved granularity
       start = System.nanoTime();
-      s.sort(items,15);
+      s.sort(items,cutoff);
       finish = System.nanoTime();
       timeTaken=finish-start;
     } else {
       System.out.println("Failed loading the sorter, no sorting will happen.");
     }
     //Check that the returned list is sorted
-    System.out.println(Sig2Utils.validate(items) + " using " + type + " on " + items.length + " items");
-    // System.out.print(" with " + Sig2Utils.numRepeatValues(items) + " repeated elements" + "\n");
-    return timeTaken/1000000; //nanoseconds -> milliseconds
+    timeTaken /= 1000000; //nanoseconds -> milliseconds
+    System.out.println(SortUtils.validate(items) + " using " + type + " on " + items.length + " items in " + timeTaken + "ms with cutoff " + cutoff);
+    // System.out.print(" with " + SortUtils.numRepeatValues(items) + " repeated elements" + "\n");
+    return timeTaken;
   }
 
   public void printSortedArray(Comparable[] items){
@@ -113,23 +116,49 @@ public class SortDemo {
 
 
   public static void main(String[] args) {
+
     SortDemo sd = new SortDemo();
-  //  Comparable[] items=sd.readData("SortingData/test3e.dat");
-  //  System.out.println(sd.testOne("sorting2014.SelectionSort",items));
+  //   Comparable[] items=sd.readData("SortingData/test6e.dat");
+  // System.out.println(sd.testOne("sorting2014.CountingSort",items,10));
     //    sd.printSortedArray(items);
 
 
-    //System.out.println(Sig2Utils.validate(items));
-    //  System.out.println(Sig2Utils.numRepeatValues(items) +" items repeating");
-
 //		System.err.println(Runtime.getRuntime().maxMemory());
-		System.out.println(sd.testAll("SortingData/test5.dat"));
- //     System.out.println(sd.testEverything());
+	//	System.out.println(sd.testAll("SortingData/test6e.dat"));
+    System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
-//		sd.printSortedArray(items);
+ //   System.out.println(sd.testCutoff());
+
   }
 
 
+  public String testCutoff(){
+    int cutoffLimit = 30;
+    String filename = "SortingData/test6e.dat";
+    String sortTypes[] = {
+      "QuickSort",
+      "MergeSort",
+    };
+
+
+    StringBuffer retLine=new StringBuffer();
+
+    for (int i= 0; i<sortTypes.length;i++){
+      long timeTaken = 0l;
+      retLine.append(sortTypes[i]);
+      for(int j = 0; j < cutoffLimit; j++){
+        for(int k = 0; k < 5; k++){
+          Comparable[] items=this.readData(filename);
+          timeTaken += this.testOne("sorting2014."+sortTypes[i],items,j);
+        }
+        retLine.append(","+timeTaken/5);
+      }
+      retLine.append("\n");
+    }
+
+
+    return retLine.toString();
+  }
 
 
   public String testEverything()
@@ -162,33 +191,38 @@ public class SortDemo {
     };
 
     String sortTypes[] = {
-      "Quick3Way",
-      "QuickSort",
-      "MergeSort",//2
-      "JavaSort",
-      "HashSort",
-      "CombSort",
-      "RadixSort",//6
-      "InsertionSort",
-      "SelectionSort", //8
-      "BubbleSort"
+ //     "Quick3Way",
+ //     "QuickSort",
+ //     "MergeSort",//2
+ //     "JavaSort",
+ //     "HashSort",
+      "CountingSort",
+ //     "CombSort",
+ //     "RadixSort",//7
+ //     "InsertionSort",
+ //     "SelectionSort", //9
+ //     "BubbleSort"
     };
 
-    long timeTaken = 0l;
+
     StringBuffer retLine=new StringBuffer();
 
     for (int i= 0; i<sortTypes.length;i++){
       retLine.append(sortTypes[i]);
       for (int j=0; j<filenames.length;j++){
+        long timeTaken = 0l;
+        for(int k = 0; k < 3; k++){
+          Comparable[] items=this.readData(filenames[j]);
+          // if (items.length>8000000 && i>5) break;
+          if (items.length>500000 && i>7) break;
+          if (items.length>70000 && i>9) break;
 
-        Comparable[] items=this.readData(filenames[j]);
-       // if (items.length>8000000 && i>5) break;
-        if (items.length>100000 && i>6) break;
-        if (items.length>10000 && i>8) break;
+          timeTaken += this.testOne("sorting2014."+sortTypes[i],items,10);
 
-        timeTaken = this.testOne("sorting2014."+sortTypes[i],items);
+        }
 
-        retLine.append(","+timeTaken);
+
+        retLine.append(","+(timeTaken/3));
       }
       retLine.append("\n");
     }
@@ -215,12 +249,12 @@ public class SortDemo {
 
     for (int i= 0; i<sortTypes.length;i++){
       Comparable[] items=this.readData(filename);
-      if (items.length>700000 && i>5) break;
+      // if (items.length>700000 && i>5) break;
       if (items.length>100000 && i>6) break;
       if (items.length>10000 && i>8) break;
 
       timeTaken[i]=
-        this.testOne("sorting2014."+sortTypes[i],items);
+        this.testOne("sorting2014."+sortTypes[i],items,10);
       retLine.append(sortTypes[i]+"\t"+timeTaken[i]+"\n");
     }
     return retLine.toString();

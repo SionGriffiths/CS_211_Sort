@@ -12,17 +12,21 @@ public class MergeSort implements Sorter {
   @Override
   public void sort(Comparable[] items, int cutoff) {
     Comparable[] temp = new Comparable[items.length];
-    mergeSort(items, temp, 0, items.length - 1);
+    mergeSort(items, temp, 0, items.length - 1, cutoff);
   }
 
-  private void mergeSort(Comparable[] items, Comparable[] temp, int left, int right){
-    if(left < right){
+  private void mergeSort(Comparable[] items, Comparable[] temp, int left, int right, int cutoff){
+    if(right <= left + cutoff){
+      InsertionSort.insertionSort(items, left, right);
+
+    }else{
       int centre = (left+right)/2;
-      mergeSort(items, temp, left, centre);
-      mergeSort(items, temp, centre+1, right);
+      mergeSort(items, temp, left, centre, cutoff);
+      mergeSort(items, temp, centre+1, right, cutoff);
       merge(items, temp, left, centre, right);
     }
   }
+
 
   private void merge(Comparable[] items, Comparable[] temp, int left, int centre, int right){
 

@@ -1,14 +1,16 @@
-package sorting2014;
+package projectUtils;
 
 /**
  * Created by sig2 on 26/02/14.
  */
-public class Sig2Utils {
+public class SortUtils {
+
+
 
   public static String validate(Comparable[] items){
 
     String checkValue ="";
-    if(isSorted(items)){
+    if(isSorted(items, 0, items.length-1)){
       checkValue = "Success, array sorted";
     }else{
       checkValue = "Fail, array unsorted";
@@ -16,18 +18,19 @@ public class Sig2Utils {
     return checkValue;
   }
 
-  private static boolean isSorted(Comparable[] items) {
-    return isSorted(items, 0, items.length - 1);
-  }
 
   private static boolean isSorted(Comparable[] items, int low, int high) {
+
     for (int i = low + 1; i <= high; i++) {
       if (less(items[i], items[i - 1])) {
+        System.out.println(items[i].toString() + " is after " + items[i-1].toString());
         return false;
       }
     }
     return true;
   }
+
+
 
   public static boolean less(Comparable item1, Comparable item2) {
     return (item1.compareTo(item2) < 0);
@@ -35,6 +38,7 @@ public class Sig2Utils {
 
 
   public static int numRepeatValues(Comparable[] items){
+
     int repeats = 0;
 
     for(int i = 0; i < items.length-1; i++){
@@ -72,22 +76,6 @@ public class Sig2Utils {
     return minmax;
   }
 
-  /*
-  public int valueRange(Comparable[] items){
-    Comparable min = null;
-    Comparable max = null;
 
-    for(Comparable i : items){
-      if(min == null || i.compareTo(min) < 0){
-        min = i;
-      }
-      if(max == null || i.compareTo(max) > 0){
-        max = i;
-      }
-    }
-    int range =  Integer.parseInt(max.toString()) - Integer.parseInt(min.toString());
-    return range;
-  }
-  */
 
 }
