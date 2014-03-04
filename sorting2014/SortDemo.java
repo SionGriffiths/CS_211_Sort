@@ -26,7 +26,7 @@ public class SortDemo {
 
     try{
       reader = new BufferedReader(
-        new FileReader(file));
+          new FileReader(file));
     } catch (FileNotFoundException e)    {
       System.out.println("File not found "+fileName);
       System.exit(0);
@@ -54,7 +54,7 @@ public class SortDemo {
 
     try{
       reader = new BufferedReader(
-        new FileReader(file));
+          new FileReader(file));
     } catch (FileNotFoundException e){
       System.out.println("File not found "+fileName);
       System.exit(0);
@@ -118,16 +118,16 @@ public class SortDemo {
   public static void main(String[] args) {
 
     SortDemo sd = new SortDemo();
-     Comparable[] items=sd.readData("SortingData/test3.dat");
-   System.out.println(sd.testOne("sorting2014.CombSort",items,10));
+    Comparable[] items=sd.readData("SortingData/test3.dat");
+    System.out.println(sd.testOne("sorting2014.CombSort",items,10));
     //    sd.printSortedArray(items);
 
 
 //		System.err.println(Runtime.getRuntime().maxMemory());
-	//	System.out.println(sd.testAll("SortingData/test6e.dat"));
- //   System.out.println(sd.testEverything());
+    //	System.out.println(sd.testAll("SortingData/test6e.dat"));
+    //   System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
- //   System.out.println(sd.testCutoff());
+    //   System.out.println(sd.testCutoff());
 
   }
 
@@ -136,8 +136,8 @@ public class SortDemo {
     int cutoffLimit = 30;
     String filename = "SortingData/test6e.dat";
     String sortTypes[] = {
-      "QuickSort",
-      "MergeSort",
+        "QuickSort",
+        "MergeSort",
     };
 
 
@@ -164,44 +164,44 @@ public class SortDemo {
   public String testEverything()
   {
     String filenames [] ={
-      "SortingData/test3.dat",
-      "SortingData/test3a.dat",
-      "SortingData/test3b.dat",
-      "SortingData/test3c.dat",
-      "SortingData/test3d.dat",
-      "SortingData/test3e.dat",
-      "SortingData/test4.dat",
-      "SortingData/test4a.dat",
-      "SortingData/test4b.dat",
-      "SortingData/test4c.dat",
-      "SortingData/test4d.dat",
-      "SortingData/test4e.dat",
-      "SortingData/test5.dat",
-      "SortingData/test5a.dat",
-      "SortingData/test5b.dat",
-      "SortingData/test5c.dat",
-      "SortingData/test5d.dat",
-      "SortingData/test5e.dat",
-      "SortingData/test6.dat",
-      "SortingData/test6a.dat",
-      "SortingData/test6b.dat",
-      "SortingData/test6c.dat",
-      "SortingData/test6d.dat",
-      "SortingData/test6e.dat",
+        "SortingData/test3.dat",
+        "SortingData/test3a.dat",
+        "SortingData/test3b.dat",
+        "SortingData/test3c.dat",
+        "SortingData/test3d.dat",
+        "SortingData/test3e.dat",
+        "SortingData/test4.dat",
+        "SortingData/test4a.dat",
+        "SortingData/test4b.dat",
+        "SortingData/test4c.dat",
+        "SortingData/test4d.dat",
+        "SortingData/test4e.dat",
+        "SortingData/test5.dat",
+        "SortingData/test5a.dat",
+        "SortingData/test5b.dat",
+        "SortingData/test5c.dat",
+        "SortingData/test5d.dat",
+        "SortingData/test5e.dat",
+        "SortingData/test6.dat",
+        "SortingData/test6a.dat",
+        "SortingData/test6b.dat",
+        "SortingData/test6c.dat",
+        "SortingData/test6d.dat",
+        "SortingData/test6e.dat",
     };
 
     String sortTypes[] = {
- //     "Quick3Way",
- //     "QuickSort",
- //     "MergeSort",//2
- //     "JavaSort",
- //     "HashSort",
-      "CountingSort",
- //     "CombSort",
- //     "RadixSort",//7
- //     "InsertionSort",
- //     "SelectionSort", //9
- //     "BubbleSort"
+        //     "Quick3Way",
+        //     "QuickSort",
+        //     "MergeSort",//2
+        //     "JavaSort",
+        //     "HashSort",
+        "CountingSort",
+        //     "CombSort",
+        //     "RadixSort",//7
+        //     "InsertionSort",
+        //     "SelectionSort", //9
+        //     "BubbleSort"
     };
 
 
@@ -232,16 +232,16 @@ public class SortDemo {
 
   public String testAll(String filename){
     String sortTypes[] = {
-      "Quick3Way",
-      "QuickSort",
-      "MergeSort",//2
-      "JavaSort",
-      "HashSort",
-      "CombSort",
-      "RadixSort",//6
-      "InsertionSort",
-      "SelectionSort", //8
-      "BubbleSort"
+        "Quick3Way",
+        "QuickSort",
+        "MergeSort",//2
+        "JavaSort",
+        "HashSort",
+        "CombSort",
+        "RadixSort",//6
+        "InsertionSort",
+        "SelectionSort", //8
+        "BubbleSort"
     };
 
     long timeTaken[] = new long[sortTypes.length];
@@ -254,7 +254,7 @@ public class SortDemo {
       if (items.length>10000 && i>8) break;
 
       timeTaken[i]=
-        this.testOne("sorting2014."+sortTypes[i],items,10);
+          this.testOne("sorting2014."+sortTypes[i],items,10);
       retLine.append(sortTypes[i]+"\t"+timeTaken[i]+"\n");
     }
     return retLine.toString();

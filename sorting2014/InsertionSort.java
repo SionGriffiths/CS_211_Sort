@@ -1,6 +1,5 @@
 package sorting2014;
 
-import projectUtils.SortUtils;
 
 /**
  * Created by sig2 on 26/02/14.

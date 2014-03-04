@@ -13,37 +13,6 @@ public class Quick3Way implements Sorter{
   public void sort(Comparable[] items, int cutoff) {
     q3sort(items, 0, items.length-1, cutoff);
   }
-/*
-  private void q3sort(Comparable[] a, int lo, int hi, int cutoff) {
-
-
-
-    if (hi <= lo) return;
-
-    int lt = lo, gt = hi;
-    Comparable v = a[lo];
-    int i = lo;
-
-    while (i <= gt) {
-
-      int cmp = a[i].compareTo(v);
-
-      if      (cmp < 0){
-        SortUtils.swapElements(a, lt++, i++);
-      }
-      else if (cmp > 0){
-        SortUtils.swapElements(a, i, gt--);
-      }
-      else{
-        i++;
-      }
-    }
-
-    // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
-    q3sort(a, lo, lt - 1, cutoff);
-    q3sort(a, gt + 1, hi, cutoff);
-
-  }*/
 
   private  void q3sort( Comparable [ ] items, int low, int high, int cutoff ) {
     if( high <= low + cutoff){

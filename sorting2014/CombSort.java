@@ -37,7 +37,6 @@ public class CombSort implements Sorter {
       swapped = false;
       for (int i = 0; i + gap < items.length; i++) {
         if (items[i].compareTo(items[i + gap]) > 0) {
-          //swap element in index i with element in index i+gap
           SortUtils.swapElements(items, i, i+gap);
           swapped = true;
         }

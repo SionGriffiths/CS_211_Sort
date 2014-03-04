@@ -4,7 +4,7 @@ package sorting2014;
  * @author Siôn Griffiths - sig2@aber.ac.uk
  *         Date: 25/02/14
  *         Time: 19:01
- *         from slides
+ *
  */
 public class MergeSort implements Sorter {
 
