@@ -5,7 +5,19 @@ import linearStructures.NodeList;
 import projectUtils.SortUtils;
 
 /**
- * Created by sig2 on 27/02/14.
+ * @author Siôn Griffiths - sig2@aber.ac.uk
+ *         Date: 27/02/14
+ *         Time: 15:12
+ *
+ * HashSort implementes a sorting algorithms that is specific to integer sorting.
+ *
+ * Using the numeric value of a list element, an index value can be generated.
+ * Using this index value to insert the element into a list results in the
+ * list being sorted in ascending order without the need for comparison between
+ * list elements.
+ *
+ * Each element in the list being inserted to is represented by a simple linked list
+ * (See NodeList class), any duplicated values are inserted into the linked list for that value.
  */
 public class HashSort implements Sorter {
 
@@ -13,16 +25,22 @@ public class HashSort implements Sorter {
   private int min;
   private int max;
 
+
   @Override
   public void sort(Comparable[] items, int cutoff) {
 
-    getMinMax(items);
+    setMinMax(items);
     int range = max-min;
     help = new NodeList[range+1];
 
     hashSort(items, items.length-1);
   }
 
+  /**
+   * Performs HashSort on an array, sorting it in ascending order.
+   * @param items the array to be sorted
+   * @param length the number of elements in the array
+   */
   private void hashSort(Comparable[] items, int length){
 
     int insertIndex = 0;
@@ -30,7 +48,7 @@ public class HashSort implements Sorter {
       insertIndex = hashFunction(items[i]);
 
       NodeList list = new NodeList();
-      if(help[insertIndex] == null){
+      if(help[insertIndex] == null){ //add element to linked list if index already occupied
         help[insertIndex] = list;
         list.add(items[i]);
       }else{
@@ -56,13 +74,23 @@ public class HashSort implements Sorter {
   }
 
 
+  /**
+   * A method to generate index values for elements to be inserted into the array.
+   * This naive method simple subtracts the minimum value found in the dataset
+   * from each element to be inserted such that the lowest value will always have an index of 0.
+   * @param element the element to generate an index value for
+   * @return the index value generated for the element.
+   */
   private int hashFunction(Comparable element){
     int value = Integer.parseInt(element.toString());
     return value - min;
   }
 
-
-  private void getMinMax(Comparable[] items){
+  /**
+   * Method to set the minimum and maximum values found in the array
+   * @param items the array
+   */
+  private void setMinMax(Comparable[] items){
     int[] minmax = SortUtils.getMinMax(items);
     this.min = minmax[0];
     this.max = minmax[1];

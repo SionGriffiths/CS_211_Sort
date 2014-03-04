@@ -118,14 +118,14 @@ public class SortDemo {
   public static void main(String[] args) {
 
     SortDemo sd = new SortDemo();
-  //   Comparable[] items=sd.readData("SortingData/test6e.dat");
-  // System.out.println(sd.testOne("sorting2014.CountingSort",items,10));
+     Comparable[] items=sd.readData("SortingData/test3.dat");
+   System.out.println(sd.testOne("sorting2014.CombSort",items,10));
     //    sd.printSortedArray(items);
 
 
 //		System.err.println(Runtime.getRuntime().maxMemory());
 	//	System.out.println(sd.testAll("SortingData/test6e.dat"));
-    System.out.println(sd.testEverything());
+ //   System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
  //   System.out.println(sd.testCutoff());
 
