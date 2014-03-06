@@ -2,7 +2,11 @@ package sorting2014;
 
 
 /**
- * Created by sig2 on 26/02/14.
+ * @author Siôn Griffiths - sig2@aber.ac.uk
+ *         Date: 25/02/14
+ *         Time: 21:33
+ *
+ * InsertionSort implements a simple insertion sort algorithm to sort a given array in ascending order.
  */
 public class InsertionSort implements Sorter {
 
@@ -12,12 +16,17 @@ public class InsertionSort implements Sorter {
   }
 
 
+  /**
+   * Performs insertion sort on a given array
+   * @param items the array
+   * @param low the low index - sorting starts from this index
+   * @param high the high index - sorting ends at this index
+   */
   public static void insertionSort(Comparable[] items, int low, int high) {
     for(int i = low + 1; i <= high; i++ ) {
 
       Comparable temp = items[i];
       int j;
-
       for(j = i; j > low && temp.compareTo(items[j-1]) < 0; j--){
 
         items[j] = items[j-1];

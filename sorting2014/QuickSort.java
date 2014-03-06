@@ -3,9 +3,10 @@ package sorting2014;
 import projectUtils.SortUtils;
 
 /**
- * Created by sig2 on 26/02/14.
+ * @author Siôn Griffiths - sig2@aber.ac.uk
+ *         Date: 25/02/14
+ *         Time: 20:04
  *
- * taken from lecture slides
  */
 public class QuickSort implements Sorter {
 

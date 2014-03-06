@@ -118,8 +118,8 @@ public class SortDemo {
   public static void main(String[] args) {
 
     SortDemo sd = new SortDemo();
-    Comparable[] items=sd.readData("SortingData/test3.dat");
-    System.out.println(sd.testOne("sorting2014.CombSort",items,10));
+   // Comparable[] items=sd.readData("SortingData/test3.dat");
+   // System.out.println(sd.testOne("sorting2014.Quick3Way",items,10));
     //    sd.printSortedArray(items);
 
 
@@ -127,13 +127,14 @@ public class SortDemo {
     //	System.out.println(sd.testAll("SortingData/test6e.dat"));
     //   System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
-    //   System.out.println(sd.testCutoff());
+      System.out.println(sd.testCutoff());
 
   }
 
 
   public String testCutoff(){
     int cutoffLimit = 30;
+    int runs = 5; // times to run at each cutoff
     String filename = "SortingData/test6e.dat";
     String sortTypes[] = {
         "QuickSort",
@@ -147,11 +148,11 @@ public class SortDemo {
       long timeTaken = 0l;
       retLine.append(sortTypes[i]);
       for(int j = 0; j < cutoffLimit; j++){
-        for(int k = 0; k < 5; k++){
+        for(int k = 0; k < runs; k++){
           Comparable[] items=this.readData(filename);
           timeTaken += this.testOne("sorting2014."+sortTypes[i],items,j);
         }
-        retLine.append(","+timeTaken/5);
+        retLine.append(","+timeTaken/runs);
       }
       retLine.append("\n");
     }

@@ -40,7 +40,6 @@ public class SortUtils {
 
     for (int i = low + 1; i <= high; i++) {
       if (less(items[i], items[i - 1])) {
-       // System.out.println(items[i].toString() + " is after " + items[i-1].toString());
         return false;
       }
     }
