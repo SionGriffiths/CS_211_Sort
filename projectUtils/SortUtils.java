@@ -36,7 +36,7 @@ public class SortUtils {
    * @param high end index
    * @return true if the array is sorted, false otherwise.
    */
-  private static boolean isSorted(Comparable[] items, int low, int high) {
+  public static boolean isSorted(Comparable[] items, int low, int high) {
 
     for (int i = low + 1; i <= high; i++) {
       if (less(items[i], items[i - 1])) {

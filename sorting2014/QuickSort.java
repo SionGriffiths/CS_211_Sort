@@ -24,7 +24,7 @@ public class QuickSort implements Sorter {
 
     if(high <= low + cutoff){
       InsertionSort.insertionSort(items, low, high);
-
+      return;
     }else{
 
       pivot = partition( items, low, high );

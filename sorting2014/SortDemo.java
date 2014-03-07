@@ -101,8 +101,8 @@ public class SortDemo {
       System.out.println("Failed loading the sorter, no sorting will happen.");
     }
     //Check that the returned list is sorted
-    timeTaken /= 1000000; //nanoseconds -> milliseconds
-    System.out.println(SortUtils.validate(items) + " using " + type + " on " + items.length + " items in " + timeTaken + "ms with cutoff " + cutoff);
+    //timeTaken /= 1000000; //nanoseconds -> milliseconds
+    //System.out.println(SortUtils.validate(items) + " using " + type + " on " + items.length + " items in " + timeTaken + "ns with cutoff " + cutoff);
     // System.out.print(" with " + SortUtils.numRepeatValues(items) + " repeated elements" + "\n");
     return timeTaken;
   }
@@ -118,14 +118,14 @@ public class SortDemo {
   public static void main(String[] args) {
 
     SortDemo sd = new SortDemo();
-   // Comparable[] items=sd.readData("SortingData/test3.dat");
-   // System.out.println(sd.testOne("sorting2014.Quick3Way",items,10));
-    //    sd.printSortedArray(items);
+    Comparable[] items=sd.readData("SortingData/test3.dat");
+    System.out.println(sd.testOne("sorting2014.MergeSort",items,10));
+       // sd.printSortedArray(items);
 
 
 //		System.err.println(Runtime.getRuntime().maxMemory());
-    //	System.out.println(sd.testAll("SortingData/test6e.dat"));
-    //   System.out.println(sd.testEverything());
+   // 	System.out.println(sd.testAll("SortingData/test3.dat"));
+   //    System.out.println(sd.testEverything());
 //		System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
       System.out.println(sd.testCutoff());
 
@@ -134,20 +134,22 @@ public class SortDemo {
 
   public String testCutoff(){
     int cutoffLimit = 30;
-    int runs = 5; // times to run at each cutoff
-    String filename = "SortingData/test6e.dat";
+    int runs = 2000; // times to run at each cutoff
+    String filename = "SortingData/test4.dat";
     String sortTypes[] = {
+       //  "Quick3Way",
         "QuickSort",
-        "MergeSort",
+     //   "MergeSort",
     };
 
 
     StringBuffer retLine=new StringBuffer();
 
     for (int i= 0; i<sortTypes.length;i++){
-      long timeTaken = 0l;
+
       retLine.append(sortTypes[i]);
       for(int j = 0; j < cutoffLimit; j++){
+        long timeTaken = 0l;
         for(int k = 0; k < runs; k++){
           Comparable[] items=this.readData(filename);
           timeTaken += this.testOne("sorting2014."+sortTypes[i],items,j);
@@ -168,62 +170,63 @@ public class SortDemo {
         "SortingData/test3.dat",
         "SortingData/test3a.dat",
         "SortingData/test3b.dat",
-        "SortingData/test3c.dat",
-        "SortingData/test3d.dat",
-        "SortingData/test3e.dat",
-        "SortingData/test4.dat",
-        "SortingData/test4a.dat",
-        "SortingData/test4b.dat",
-        "SortingData/test4c.dat",
-        "SortingData/test4d.dat",
-        "SortingData/test4e.dat",
-        "SortingData/test5.dat",
-        "SortingData/test5a.dat",
-        "SortingData/test5b.dat",
-        "SortingData/test5c.dat",
-        "SortingData/test5d.dat",
-        "SortingData/test5e.dat",
-        "SortingData/test6.dat",
-        "SortingData/test6a.dat",
-        "SortingData/test6b.dat",
-        "SortingData/test6c.dat",
-        "SortingData/test6d.dat",
-        "SortingData/test6e.dat",
+    //    "SortingData/test3c.dat",
+      //  "SortingData/test3d.dat",
+     //   "SortingData/test3e.dat",
+    //    "SortingData/test4.dat",
+     //   "SortingData/test4a.dat",
+     //   "SortingData/test4b.dat",
+     //   "SortingData/test4c.dat",
+       // "SortingData/test4d.dat",
+      //  "SortingData/test4e.dat",
+     //   "SortingData/test5.dat",
+     //   "SortingData/test5a.dat",
+     //   "SortingData/test5b.dat",
+       // "SortingData/test5c.dat",
+       // "SortingData/test5d.dat",
+       // "SortingData/test5e.dat",
+     //   "SortingData/test6.dat",
+     //   "SortingData/test6a.dat",
+     //   "SortingData/test6b.dat",
+      //  "SortingData/test6c.dat",
+       // "SortingData/test6d.dat",
+       // "SortingData/test6e.dat",
     };
 
     String sortTypes[] = {
-        //     "Quick3Way",
-        //     "QuickSort",
-        //     "MergeSort",//2
-        //     "JavaSort",
-        //     "HashSort",
-        "CountingSort",
-        //     "CombSort",
-        //     "RadixSort",//7
-        //     "InsertionSort",
-        //     "SelectionSort", //9
-        //     "BubbleSort"
+     //        "Quick3Way",
+     //        "QuickSort",
+     //        "MergeSort",//2
+     //        "JavaSort",
+     //       "HashSort",
+     //        "CountingSort",
+    //        "CombSort",
+    //         "RadixSort",//7
+             "InsertionSort",
+     //        "SelectionSort", //9
+     //        "BubbleSort"
     };
 
-
+    int numruns = 200;
     StringBuffer retLine=new StringBuffer();
 
     for (int i= 0; i<sortTypes.length;i++){
       retLine.append(sortTypes[i]);
       for (int j=0; j<filenames.length;j++){
         long timeTaken = 0l;
-        for(int k = 0; k < 3; k++){
+        for(int k = 0; k < numruns; k++){
           Comparable[] items=this.readData(filenames[j]);
           // if (items.length>8000000 && i>5) break;
           if (items.length>500000 && i>7) break;
           if (items.length>70000 && i>9) break;
+
 
           timeTaken += this.testOne("sorting2014."+sortTypes[i],items,10);
 
         }
 
 
-        retLine.append(","+(timeTaken/3));
+        retLine.append(","+(timeTaken/numruns));
       }
       retLine.append("\n");
     }
@@ -233,16 +236,17 @@ public class SortDemo {
 
   public String testAll(String filename){
     String sortTypes[] = {
-        "Quick3Way",
-        "QuickSort",
-        "MergeSort",//2
-        "JavaSort",
-        "HashSort",
-        "CombSort",
-        "RadixSort",//6
-        "InsertionSort",
-        "SelectionSort", //8
-        "BubbleSort"
+      "Quick3Way",
+      "QuickSort",
+      "MergeSort",//2
+      "JavaSort",
+      "HashSort",
+      "CountingSort",
+      "CombSort",
+      "RadixSort",//7
+      //     "InsertionSort",
+      //     "SelectionSort", //9
+      //     "BubbleSort"
     };
 
     long timeTaken[] = new long[sortTypes.length];
