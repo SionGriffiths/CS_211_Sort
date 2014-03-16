@@ -48,11 +48,11 @@ public class HashSort implements Sorter {
       insertIndex = hashFunction(items[i]);
 
       NodeList list = new NodeList();
-      if(help[insertIndex] == null){ //add element to linked list if index already occupied
+      if(help[insertIndex] == null){ //check if index already occupied
         help[insertIndex] = list;
         list.add(items[i]);
       }else{
-        help[insertIndex].add(items[i]);
+        help[insertIndex].add(items[i]); //add element to linked list if already occupied
       }
     }
 
