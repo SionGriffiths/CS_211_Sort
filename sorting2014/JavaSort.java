@@ -3,7 +3,9 @@ package sorting2014;
 import java.util.Arrays;
 
 /**
- * Created by sig2 on 27/02/14.
+ * @author Siôn Griffiths - sig2@aber.ac.uk
+ *         Date: 27/02/14
+ *         Time: 09:22
  *
  * JavaSort calls the java library default array sort.
  *

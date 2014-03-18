@@ -110,7 +110,7 @@ public class SortDemo {
     return timeTaken;
   }
 
-// Rudimentary memory consumption test.
+  // Rudimentary memory consumption test.
   public long testMem(String type, Comparable[] items, int cutoff){
 
     Sorter s = SortFactory.getSorter(type);
@@ -140,15 +140,15 @@ public class SortDemo {
   public static void main(String[] args) {
 
     SortDemo sd = new SortDemo();
-    Comparable[] items=sd.readData("SortingData/test3.dat");
-    System.out.println(sd.testOne("sorting2014.JavaSort",items,10));
+    Comparable[] items=sd.readData("SortingData/test5b.dat");
+    System.out.println(sd.testOne("sorting2014.RadixSort",items,10));
 //    System.out.println(sd.testMem("sorting2014.RadixSort", items, 10));
 //    sd.printSortedArray(items);
 //
 //    System.out.println(sd.testSorted());
 //    System.err.println(Runtime.getRuntime().maxMemory());
 //    System.out.println(sd.testAll("SortingData/test7.dat"));
-    System.out.println(sd.testEverything());
+//    System.out.println(sd.testEverything());
 //    System.out.println(sd.testOne("sorting.OptimisedQuickSort",items));
 //    System.out.println(sd.testCutoff())
   }
@@ -189,30 +189,36 @@ public class SortDemo {
   public String testEverything()
   {
     String filenames [] ={
+//      "SortingData/test1.dat",
+//      "SortingData/test1a.dat",
+//      "SortingData/test1b.dat",
+//      "SortingData/test2.dat",
+//      "SortingData/test2a.dat",
+//      "SortingData/test2b.dat",
       "SortingData/test3.dat",
       "SortingData/test3a.dat",
       "SortingData/test3b.dat",
 //      "SortingData/test3c.dat",
-//      "SortingData/test3d.dat",
-//      "SortingData/test3e.dat",
-      "SortingData/test4.dat",
+//        "SortingData/test3d.dat",
+//         "SortingData/test3e.dat",
+//      "SortingData/test4.dat",
       "SortingData/test4a.dat",
       "SortingData/test4b.dat",
-//      "SortingData/test4c.dat",
-//      "SortingData/test4d.dat",
-//      "SortingData/test4e.dat",
+      "SortingData/test4c.dat",
+      // "SortingData/test4d.dat",
+      //  "SortingData/test4e.dat",
       "SortingData/test5.dat",
       "SortingData/test5a.dat",
       "SortingData/test5b.dat",
-//      "SortingData/test5c.dat",
-//      "SortingData/test5d.dat",
-//      "SortingData/test5e.dat",
+      // "SortingData/test5c.dat",
+      // "SortingData/test5d.dat",
+      // "SortingData/test5e.dat",
       "SortingData/test6.dat",
       "SortingData/test6a.dat",
       "SortingData/test6b.dat",
-//      "SortingData/test6c.dat",
-//      "SortingData/test6d.dat",
-//      "SortingData/test6e.dat",
+      //  "SortingData/test6c.dat",
+      // "SortingData/test6d.dat",
+      // "SortingData/test6e.dat",
       "SortingData/test7.dat",
 //      "SortingData/test7a.dat",
 //      "SortingData/test7b.dat",
@@ -225,14 +231,14 @@ public class SortDemo {
       "JavaSort",
       "HashSort",
       "CountingSort",
-      "CombSort",
-      "RadixSort",//7
-      "InsertionSort",
-      "SelectionSort", //9
-      "BubbleSort"
+     "CombSort",
+     "RadixSort",//7
+//      "InsertionSort",
+//      "SelectionSort", //9
+//     "BubbleSort"
     };
 
-    int numruns = 3;
+    int numruns = 1000;
     StringBuffer retLine=new StringBuffer();
 
     for (int i= 0; i<sortTypes.length;i++){
@@ -247,13 +253,14 @@ public class SortDemo {
           if (items.length>50000 && i>9) break;
 
 
-          timeTaken += this.testMem("sorting2014." + sortTypes[i], items, 10);
+          timeTaken += this.testOne("sorting2014." + sortTypes[i], items, 10);
 
         }
 
 
         retLine.append(","+(timeTaken/numruns));
       }
+
       retLine.append("\n");
     }
     return retLine.toString();
@@ -301,28 +308,28 @@ public class SortDemo {
       "SortingData/test3.dat",
       "SortingData/test3a.dat",
       "SortingData/test3b.dat",
-      //    "SortingData/test3c.dat",
-      //  "SortingData/test3d.dat",
-      //   "SortingData/test3e.dat",
+      "SortingData/test3c.dat",
+//        "SortingData/test3d.dat",
+//         "SortingData/test3e.dat",
       "SortingData/test4.dat",
       "SortingData/test4a.dat",
       "SortingData/test4b.dat",
-      //   "SortingData/test4c.dat",
+      "SortingData/test4c.dat",
       // "SortingData/test4d.dat",
       //  "SortingData/test4e.dat",
-      "SortingData/test5.dat",
-      "SortingData/test5a.dat",
-      "SortingData/test5b.dat",
+//      "SortingData/test5.dat",
+//      "SortingData/test5a.dat",
+//      "SortingData/test5b.dat",
       // "SortingData/test5c.dat",
       // "SortingData/test5d.dat",
       // "SortingData/test5e.dat",
-      "SortingData/test6.dat",
-      "SortingData/test6a.dat",
-      "SortingData/test6b.dat",
+//      "SortingData/test6.dat",
+//      "SortingData/test6a.dat",
+//      "SortingData/test6b.dat",
       //  "SortingData/test6c.dat",
       // "SortingData/test6d.dat",
       // "SortingData/test6e.dat",
-      "SortingData/test7.dat",
+//      "SortingData/test7.dat",
 //      "SortingData/test7a.dat",
 //      "SortingData/test7b.dat",
     };
@@ -332,16 +339,16 @@ public class SortDemo {
       "QuickSort",
       "MergeSort",//2
       "JavaSort",
-      "HashSort",
-      "CountingSort",
-      "CombSort",
+//      "HashSort",
+//      "CountingSort",
+//      "CombSort",
       "RadixSort",//7
-      "InsertionSort",
-      "SelectionSort", //9
-      "BubbleSort"
+//      "InsertionSort",
+//      "SelectionSort", //9
+//      "BubbleSort"
     };
 
-    int numruns = 5;
+    int numruns = 2000;
     StringBuffer retLine=new StringBuffer();
 
     for (int i= 0; i<sortTypes.length;i++){
@@ -359,8 +366,8 @@ public class SortDemo {
             this.testOne("sorting2014.JavaSort",items,10);
           }
           // if (items.length>5000000 && i>5) break;
-          if (items.length>100000 && i>8) break;
-          //if (items.length>70000 && i>9) break;
+//          if (items.length>100000 && i>8) break;
+//          if (items.length>70000 && i>9) break;
 
 
           timeTaken += this.testOne("sorting2014."+sortTypes[i],items,10);

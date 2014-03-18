@@ -6,6 +6,10 @@ import projectUtils.SortUtils;
  * @author Siôn Griffiths - sig2@aber.ac.uk
  *         Date: 26/02/14
  *         Time: 15:25
+ *
+ * Quick3way is a 3 way partitioning implemtation of Quick sort.
+ * http://algs4.cs.princeton.edu/23quicksort/
+ * @see <a href="http://algs4.cs.princeton.edu/23quicksort/">princeton.edu/quicksort</a>
  */
 public class Quick3Way implements Sorter{
 
@@ -14,6 +18,13 @@ public class Quick3Way implements Sorter{
     q3sort(items, 0, items.length-1, cutoff);
   }
 
+  /**
+   * Performs 3 way quicksort
+   * @param items The array to be sorted
+   * @param low the lower index bound
+   * @param high the higher index bound
+   * @param cutoff controls when 3 way quicksort will drop into insertion sort
+   */
   private  void q3sort( Comparable [ ] items, int low, int high, int cutoff ) {
     if( high <= low + cutoff){
       InsertionSort.insertionSort( items, low, high );

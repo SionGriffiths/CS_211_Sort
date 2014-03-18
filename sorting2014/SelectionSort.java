@@ -4,6 +4,8 @@ package sorting2014;
  * @author Siôn Griffiths - sig2@aber.ac.uk
  *         Date: 25/02/14
  *         Time: 15:49
+ *
+ * SelectionSort implements a simple selection sort algorithm to sort a comparable list in ascending order.
  */
 public class SelectionSort implements Sorter {
 

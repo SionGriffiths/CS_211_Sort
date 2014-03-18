@@ -6,7 +6,7 @@ import projectUtils.SortUtils;
  * @author Siôn Griffiths - sig2@aber.ac.uk
  *         Date: 25/02/14
  *         Time: 20:04
- *
+ * QuickSort implements a standard quicksort algorithm to sort a Comparable list in ascending order
  */
 public class QuickSort implements Sorter {
 
@@ -19,6 +19,13 @@ public class QuickSort implements Sorter {
 
   }
 
+  /**
+   * Performs quicksort on parameter list to be sorted
+   * @param items the list to be sorted
+   * @param low the lower index bound
+   * @param high the higher index bound
+   * @param cutoff controls when quickSort will drop into insertion sort
+   */
   private void quickSort(Comparable[] items, int low, int high, int cutoff){
     int pivot;
 
@@ -39,7 +46,14 @@ public class QuickSort implements Sorter {
   }
 
 
-
+  /**
+   * Partitions a sub array around a pivot element. Moves other elements in an index-range
+   * to either side of the pivot depending on thier comparable value.
+   * @param items the array to be sorted
+   * @param low lower bound of index range
+   * @param high upper bound of index range
+   * @return the pivot position
+   */
   private int partition(Comparable[] items, int low, int high){
 
     int diff = (high-low)/2;

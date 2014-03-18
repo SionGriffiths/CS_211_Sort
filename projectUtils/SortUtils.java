@@ -1,7 +1,9 @@
 package projectUtils;
 
 /**
- * Created by sig2 on 26/02/14.
+ * @author Siôn Griffiths - sig2@aber.ac.uk
+ *         Date: 26/02/14
+ *         Time: 11:36
  *
  * SortUtils defines methods that are used to aid the project. Methods are implemented to
  * validate a sort result, compare two comparable objects, swap elements by index in an array
